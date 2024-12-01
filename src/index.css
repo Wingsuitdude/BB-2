@@ -1,0 +1,131 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html, body {
+    @apply bg-dark-300 text-gray-100 overflow-x-hidden;
+    background: #0f0f1a;
+  }
+}
+
+@layer utilities {
+  .animate-fade-up {
+    animation: fadeUp 0.8s ease-out forwards;
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  .animate-fade-in {
+    animation: fadeIn 0.8s ease-out forwards;
+    opacity: 0;
+  }
+
+  .animate-gradient-text {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-accent-purple via-primary-500 to-accent-blue;
+    background-size: 200% auto;
+    animation: gradient 3s linear infinite;
+  }
+
+  .animate-delay-100 {
+    animation-delay: 100ms;
+  }
+
+  .animate-delay-200 {
+    animation-delay: 200ms;
+  }
+
+  .animate-delay-300 {
+    animation-delay: 300ms;
+  }
+}
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* Ensure content is always visible */
+.relative {
+  isolation: isolate;
+}
+
+/* Add some transparency to dark backgrounds */
+.bg-dark-100 {
+  background-color: rgba(26, 26, 46, 0.8);
+}
+
+.bg-dark-200 {
+  background-color: rgba(22, 22, 43, 0.8);
+}
+
+.bg-dark-300 {
+  background-color: rgba(15, 15, 26, 0.95);
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-dark-200;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-primary-500/50 rounded-full hover:bg-primary-500;
+}
+
+/* Button hover effects */
+.btn {
+  @apply relative overflow-hidden transition-all duration-300;
+}
+
+.btn::after {
+  content: '';
+  @apply absolute inset-0 opacity-0 transition-opacity duration-300;
+  background: linear-gradient(45deg, rgba(42, 159, 255, 0.2), rgba(159, 42, 255, 0.2));
+}
+
+.btn:hover::after {
+  @apply opacity-100;
+}
+
+/* Card hover effects */
+.card {
+  @apply transition-all duration-300;
+  background: linear-gradient(45deg, rgba(26, 26, 46, 0.8), rgba(22, 22, 43, 0.8));
+}
+
+.card:hover {
+  background: linear-gradient(45deg, rgba(26, 26, 46, 0.9), rgba(22, 22, 43, 0.9));
+  box-shadow: 0 0 20px rgba(108, 42, 255, 0.1);
+}
